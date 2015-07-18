@@ -1,0 +1,70 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.22823.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Linq.Parsers", "Linq.Parsers\Linq.Parsers.csproj", "{C139280E-6CBA-4F0E-A117-3C9074CCDCD6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Linq.Parsers.Testing", "Linq.Parsers.Testing\Linq.Parsers.Testing.csproj", "{9CF7CDEB-6804-483E-B16B-7730E4F2FE80}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|ARM = Debug|ARM
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|ARM = Release|ARM
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C139280E-6CBA-4F0E-A117-3C9074CCDCD6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C139280E-6CBA-4F0E-A117-3C9074CCDCD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C139280E-6CBA-4F0E-A117-3C9074CCDCD6}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{C139280E-6CBA-4F0E-A117-3C9074CCDCD6}.Debug|ARM.Build.0 = Debug|Any CPU
+		{C139280E-6CBA-4F0E-A117-3C9074CCDCD6}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{C139280E-6CBA-4F0E-A117-3C9074CCDCD6}.Debug|x64.Build.0 = Debug|Any CPU
+		{C139280E-6CBA-4F0E-A117-3C9074CCDCD6}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{C139280E-6CBA-4F0E-A117-3C9074CCDCD6}.Debug|x86.Build.0 = Debug|Any CPU
+		{C139280E-6CBA-4F0E-A117-3C9074CCDCD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C139280E-6CBA-4F0E-A117-3C9074CCDCD6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C139280E-6CBA-4F0E-A117-3C9074CCDCD6}.Release|ARM.ActiveCfg = Release|Any CPU
+		{C139280E-6CBA-4F0E-A117-3C9074CCDCD6}.Release|ARM.Build.0 = Release|Any CPU
+		{C139280E-6CBA-4F0E-A117-3C9074CCDCD6}.Release|x64.ActiveCfg = Release|Any CPU
+		{C139280E-6CBA-4F0E-A117-3C9074CCDCD6}.Release|x64.Build.0 = Release|Any CPU
+		{C139280E-6CBA-4F0E-A117-3C9074CCDCD6}.Release|x86.ActiveCfg = Release|Any CPU
+		{C139280E-6CBA-4F0E-A117-3C9074CCDCD6}.Release|x86.Build.0 = Release|Any CPU
+		{9CF7CDEB-6804-483E-B16B-7730E4F2FE80}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9CF7CDEB-6804-483E-B16B-7730E4F2FE80}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9CF7CDEB-6804-483E-B16B-7730E4F2FE80}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{9CF7CDEB-6804-483E-B16B-7730E4F2FE80}.Debug|ARM.Build.0 = Debug|Any CPU
+		{9CF7CDEB-6804-483E-B16B-7730E4F2FE80}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{9CF7CDEB-6804-483E-B16B-7730E4F2FE80}.Debug|x64.Build.0 = Debug|Any CPU
+		{9CF7CDEB-6804-483E-B16B-7730E4F2FE80}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{9CF7CDEB-6804-483E-B16B-7730E4F2FE80}.Debug|x86.Build.0 = Debug|Any CPU
+		{9CF7CDEB-6804-483E-B16B-7730E4F2FE80}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9CF7CDEB-6804-483E-B16B-7730E4F2FE80}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9CF7CDEB-6804-483E-B16B-7730E4F2FE80}.Release|ARM.ActiveCfg = Release|Any CPU
+		{9CF7CDEB-6804-483E-B16B-7730E4F2FE80}.Release|ARM.Build.0 = Release|Any CPU
+		{9CF7CDEB-6804-483E-B16B-7730E4F2FE80}.Release|x64.ActiveCfg = Release|Any CPU
+		{9CF7CDEB-6804-483E-B16B-7730E4F2FE80}.Release|x64.Build.0 = Release|Any CPU
+		{9CF7CDEB-6804-483E-B16B-7730E4F2FE80}.Release|x86.ActiveCfg = Release|Any CPU
+		{9CF7CDEB-6804-483E-B16B-7730E4F2FE80}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 3
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://dougrubino.visualstudio.com/defaultcollection
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = Linq.Parsers\\Linq.Parsers.csproj
+		SccProjectName1 = Linq.Parsers
+		SccLocalPath1 = Linq.Parsers
+		SccProjectUniqueName2 = Linq.Parsers.Testing\\Linq.Parsers.Testing.csproj
+		SccProjectName2 = Linq.Parsers.Testing
+		SccLocalPath2 = Linq.Parsers.Testing
+	EndGlobalSection
+EndGlobal

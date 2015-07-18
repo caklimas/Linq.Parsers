@@ -1,0 +1,7 @@
+C:\Users\drubino\Documents\Software\Linq.Parsers\Linq.Parsers.Testing\bin\Debug\Linq.Parsers.Testing.dll
+C:\Users\drubino\Documents\Software\Linq.Parsers\Linq.Parsers.Testing\bin\Debug\Linq.Parsers.Testing.pdb
+C:\Users\drubino\Documents\Software\Linq.Parsers\Linq.Parsers.Testing\bin\Debug\Linq.Parsers.dll
+C:\Users\drubino\Documents\Software\Linq.Parsers\Linq.Parsers.Testing\bin\Debug\Linq.Parsers.pdb
+C:\Users\drubino\Documents\Software\Linq.Parsers\Linq.Parsers.Testing\obj\Debug\Linq.Parsers.Testing.csprojResolveAssemblyReference.cache
+C:\Users\drubino\Documents\Software\Linq.Parsers\Linq.Parsers.Testing\obj\Debug\Linq.Parsers.Testing.dll
+C:\Users\drubino\Documents\Software\Linq.Parsers\Linq.Parsers.Testing\obj\Debug\Linq.Parsers.Testing.pdb
