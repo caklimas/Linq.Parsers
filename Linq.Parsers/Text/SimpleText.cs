@@ -48,13 +48,10 @@ namespace Linq.Parsers
 
         public SimpleText(string value, int index, int length)
         {
-            value.AssertNotNull();
-            if (index < 0)
-                throw new ArgumentException("index cannot be negative.");
-            if (length < 0)
-                throw new ArgumentException("length cannot be negative.");
-            if (index + length > value.Length)
-                throw new ArgumentException("The index is out of bounds.");
+            Debug.Assert(value != null);
+            Debug.Assert(index >= 0);
+            Debug.Assert(length >= 0);
+            Debug.Assert(index + length <= value.Length);
 
             this.value = value;
             this.index = index;
@@ -67,7 +64,7 @@ namespace Linq.Parsers
 
         public override IEnumerator<char> GetEnumerator()
         {
-            for (int i = this.index, length = this.length; i < length; i++)
+            for (int i = 0, length = this.length; i < length; i++)
                 yield return this[i];
         }
 
@@ -79,6 +76,9 @@ namespace Linq.Parsers
 
         public override SplitText Split(int index)
         {
+            if (index < 0 || index > this.length)
+                throw new ArgumentOutOfRangeException("The index is out of the bounds of the Text.");
+
             var head = new SimpleText(this.value, this.index, index);
             var tail = new SimpleText(this.value, this.index + index, this.length - index);
 
@@ -96,8 +96,8 @@ namespace Linq.Parsers
             Debug.Assert(this.Length > 0);
 
             return
-                this.value == tail.value &&
-                this.index + this.length + 1 == tail.index;
+                object.ReferenceEquals(this.value, tail.value) &&
+                this.index + this.length == tail.index;
         }
 
         #endregion //IsSimpleTextAppendableTo

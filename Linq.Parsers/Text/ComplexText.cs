@@ -64,17 +64,19 @@ namespace Linq.Parsers
 
         #region Constructors
 
-        public ComplexText(params Text[] texts)
-            : this((IEnumerable<Text>)texts, true)
-        { }
+        public ComplexText(params Text[] texts) : this((IEnumerable<Text>)texts, true) { }
 
         public ComplexText(IEnumerable<Text> texts, bool enableOptimizations = true)
         {
-            texts.AssertNotNull();
+            Debug.Assert(texts != null);
+            Debug.Assert(texts.All(t => t != null));
+
             this.texts =
                 enableOptimizations ?
                 FlattenTextOptimally(texts) :
                 FlattenText(texts);
+
+            Debug.Assert(this.texts.All(t => t is SimpleText));
         }
 
         #endregion //Constructors
@@ -163,15 +165,21 @@ namespace Linq.Parsers
             Debug.Assert(tail.Length > 0);
             Debug.Assert(this.Length > 0);
 
-            if (IsSimpleTextAppendableTo(tail))
-                return new ComplexText(
+            var text = IsSimpleTextAppendableTo(tail) ?
+                new ComplexText(
                     this.texts.Take(this.texts.Count - 1)
                     .Concat(new[] { this.texts.Last().AppendSimpleText(tail) }),
-                    enableOptimizations: false);
-
-            return new ComplexText(
+                    enableOptimizations: false) :
+                new ComplexText(
                 this.texts.Concat(new[] { tail }),
                 enableOptimizations: false);
+
+            var texts = text.texts;
+            if (texts.Count == 0)
+                return Text.Empty;
+            if (texts.Count == 1)
+                return text.texts[0];
+            return text;
         }
 
         #endregion //AppendSimpleText
@@ -184,16 +192,22 @@ namespace Linq.Parsers
             Debug.Assert(tail.Length > 0);
             Debug.Assert(this.Length > 0);
 
-            if (IsComplexTextAppendableTo(tail))
-                return new ComplexText(
+            var text = IsComplexTextAppendableTo(tail) ?
+                new ComplexText(
                     this.texts.Take(this.texts.Count - 1)
                     .Concat(new[] { this.texts.Last().AppendSimpleText((SimpleText)tail.texts.First()) })
                     .Concat(tail.texts.Skip(1)),
+                    enableOptimizations: false) :
+                new ComplexText(
+                    this.texts.Concat(tail.texts),
                     enableOptimizations: false);
 
-            return new ComplexText(
-                this.texts.Concat(tail.texts),
-                enableOptimizations: false);
+            var texts = text.texts;
+            if (texts.Count == 0)
+                return Text.Empty;
+            if (texts.Count == 1)
+                return text.texts[0];
+            return text;
         }
 
         #endregion //AppendComplexText
@@ -217,7 +231,7 @@ namespace Linq.Parsers
 
         #region FlattenText
 
-        private static List<Text> FlattenText(IEnumerable<Text> texts)
+        internal static List<Text> FlattenText(IEnumerable<Text> texts)
         {
             var result = new List<Text>();
 
@@ -241,14 +255,14 @@ namespace Linq.Parsers
 
         #region FlattenTextOptimally
 
-        private static List<Text> FlattenTextOptimally(IEnumerable<Text> texts)
+        internal static List<Text> FlattenTextOptimally(IEnumerable<Text> texts)
         {
             var result = new List<Text>();
 
             Text lastText = null;
             foreach (var text in texts)
             {
-                if (text == null || text.Length == 0)
+                if (text.Length == 0)
                     continue;
 
                 var complexText = text as ComplexText;
@@ -298,6 +312,8 @@ namespace Linq.Parsers
                             continue;
                         }
                     }
+
+                    result.Add(innerText);
                 }
 
                 if (result.Count > 0)

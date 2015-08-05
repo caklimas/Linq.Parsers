@@ -55,10 +55,11 @@
   </Choose>
   <ItemGroup>
     <Compile Include="GrammarTest.cs" />
-    <Compile Include="Parsers\TextParserText.cs" />
+    <Compile Include="Parsers\SetParserTest.cs" />
+    <Compile Include="Parsers\TextParserTest.cs" />
     <Compile Include="Performance\PerformanceTest.cs" />
     <Compile Include="Test.cs" />
-    <Compile Include="Parsers\ParserTest.cs" />
+    <Compile Include="Parsers\ParserExtensionsTest.cs" />
     <Compile Include="Text\ComplexTextTest.cs" />
     <Compile Include="Text\TextTest.cs" />
     <Compile Include="Text\SimpleTextTest.cs" />

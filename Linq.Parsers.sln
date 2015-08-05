@@ -1,11 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.22823.1
+VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Linq.Parsers", "Linq.Parsers\Linq.Parsers.csproj", "{C139280E-6CBA-4F0E-A117-3C9074CCDCD6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Linq.Parsers.Testing", "Linq.Parsers.Testing\Linq.Parsers.Testing.csproj", "{9CF7CDEB-6804-483E-B16B-7730E4F2FE80}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Linq.Parsers.Json", "Linq.Parsers.Json\Linq.Parsers.Json.csproj", "{F2C1F97B-6325-44F0-A812-DBBA8D2EFB43}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Linq.Parsers.Json.Testing", "Linq.Parsers.Json.Testing\Linq.Parsers.Json.Testing.csproj", "{9EA71339-4ED8-41AC-BB20-179BD65487E4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Testing", "Testing", "{B4565689-5CB6-4855-975C-7A7C1356872A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,12 +57,48 @@ Global
 		{9CF7CDEB-6804-483E-B16B-7730E4F2FE80}.Release|x64.Build.0 = Release|Any CPU
 		{9CF7CDEB-6804-483E-B16B-7730E4F2FE80}.Release|x86.ActiveCfg = Release|Any CPU
 		{9CF7CDEB-6804-483E-B16B-7730E4F2FE80}.Release|x86.Build.0 = Release|Any CPU
+		{F2C1F97B-6325-44F0-A812-DBBA8D2EFB43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2C1F97B-6325-44F0-A812-DBBA8D2EFB43}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2C1F97B-6325-44F0-A812-DBBA8D2EFB43}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{F2C1F97B-6325-44F0-A812-DBBA8D2EFB43}.Debug|ARM.Build.0 = Debug|Any CPU
+		{F2C1F97B-6325-44F0-A812-DBBA8D2EFB43}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{F2C1F97B-6325-44F0-A812-DBBA8D2EFB43}.Debug|x64.Build.0 = Debug|Any CPU
+		{F2C1F97B-6325-44F0-A812-DBBA8D2EFB43}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{F2C1F97B-6325-44F0-A812-DBBA8D2EFB43}.Debug|x86.Build.0 = Debug|Any CPU
+		{F2C1F97B-6325-44F0-A812-DBBA8D2EFB43}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2C1F97B-6325-44F0-A812-DBBA8D2EFB43}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F2C1F97B-6325-44F0-A812-DBBA8D2EFB43}.Release|ARM.ActiveCfg = Release|Any CPU
+		{F2C1F97B-6325-44F0-A812-DBBA8D2EFB43}.Release|ARM.Build.0 = Release|Any CPU
+		{F2C1F97B-6325-44F0-A812-DBBA8D2EFB43}.Release|x64.ActiveCfg = Release|Any CPU
+		{F2C1F97B-6325-44F0-A812-DBBA8D2EFB43}.Release|x64.Build.0 = Release|Any CPU
+		{F2C1F97B-6325-44F0-A812-DBBA8D2EFB43}.Release|x86.ActiveCfg = Release|Any CPU
+		{F2C1F97B-6325-44F0-A812-DBBA8D2EFB43}.Release|x86.Build.0 = Release|Any CPU
+		{9EA71339-4ED8-41AC-BB20-179BD65487E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9EA71339-4ED8-41AC-BB20-179BD65487E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9EA71339-4ED8-41AC-BB20-179BD65487E4}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{9EA71339-4ED8-41AC-BB20-179BD65487E4}.Debug|ARM.Build.0 = Debug|Any CPU
+		{9EA71339-4ED8-41AC-BB20-179BD65487E4}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{9EA71339-4ED8-41AC-BB20-179BD65487E4}.Debug|x64.Build.0 = Debug|Any CPU
+		{9EA71339-4ED8-41AC-BB20-179BD65487E4}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{9EA71339-4ED8-41AC-BB20-179BD65487E4}.Debug|x86.Build.0 = Debug|Any CPU
+		{9EA71339-4ED8-41AC-BB20-179BD65487E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9EA71339-4ED8-41AC-BB20-179BD65487E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9EA71339-4ED8-41AC-BB20-179BD65487E4}.Release|ARM.ActiveCfg = Release|Any CPU
+		{9EA71339-4ED8-41AC-BB20-179BD65487E4}.Release|ARM.Build.0 = Release|Any CPU
+		{9EA71339-4ED8-41AC-BB20-179BD65487E4}.Release|x64.ActiveCfg = Release|Any CPU
+		{9EA71339-4ED8-41AC-BB20-179BD65487E4}.Release|x64.Build.0 = Release|Any CPU
+		{9EA71339-4ED8-41AC-BB20-179BD65487E4}.Release|x86.ActiveCfg = Release|Any CPU
+		{9EA71339-4ED8-41AC-BB20-179BD65487E4}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{9CF7CDEB-6804-483E-B16B-7730E4F2FE80} = {B4565689-5CB6-4855-975C-7A7C1356872A}
+		{9EA71339-4ED8-41AC-BB20-179BD65487E4} = {B4565689-5CB6-4855-975C-7A7C1356872A}
+	EndGlobalSection
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 3
+		SccNumberOfProjects = 5
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://dougrubino.visualstudio.com/defaultcollection
 		SccLocalPath0 = .
@@ -64,7 +106,15 @@ Global
 		SccProjectName1 = Linq.Parsers
 		SccLocalPath1 = Linq.Parsers
 		SccProjectUniqueName2 = Linq.Parsers.Testing\\Linq.Parsers.Testing.csproj
+		SccProjectTopLevelParentUniqueName2 = Linq.Parsers.sln
 		SccProjectName2 = Linq.Parsers.Testing
 		SccLocalPath2 = Linq.Parsers.Testing
+		SccProjectUniqueName3 = Linq.Parsers.Json\\Linq.Parsers.Json.csproj
+		SccProjectName3 = Linq.Parsers.Json
+		SccLocalPath3 = Linq.Parsers.Json
+		SccProjectUniqueName4 = Linq.Parsers.Json.Testing\\Linq.Parsers.Json.Testing.csproj
+		SccProjectTopLevelParentUniqueName4 = Linq.Parsers.sln
+		SccProjectName4 = Linq.Parsers.Json.Testing
+		SccLocalPath4 = Linq.Parsers.Json.Testing
 	EndGlobalSection
 EndGlobal

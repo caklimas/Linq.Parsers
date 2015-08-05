@@ -18,5 +18,15 @@ namespace Linq.Parsers
         }
 
         #endregion //AssertNotNull
+
+        #region AssertNotNegative
+
+        public static void AssertNotNegative(this int value, string message = "The specified value cannot be less than zero.")
+        {
+            if (value < 0)
+                throw new InvalidOperationException(message);
+        }
+
+        #endregion //AssertNotNegative
     }
 }

@@ -1,0 +1,10 @@
+C:\Users\drubino\Documents\Software\Linq.Parsers\Linq.Parsers.Json.Testing\obj\Debug\Linq.Parsers.Json.Testing.csprojResolveAssemblyReference.cache
+C:\Users\drubino\Documents\Software\Linq.Parsers\Linq.Parsers.Json.Testing\bin\Debug\Linq.Parsers.Json.Testing.dll
+C:\Users\drubino\Documents\Software\Linq.Parsers\Linq.Parsers.Json.Testing\bin\Debug\Linq.Parsers.Json.Testing.pdb
+C:\Users\drubino\Documents\Software\Linq.Parsers\Linq.Parsers.Json.Testing\bin\Debug\Linq.Parsers.dll
+C:\Users\drubino\Documents\Software\Linq.Parsers\Linq.Parsers.Json.Testing\bin\Debug\Linq.Parsers.Json.dll
+C:\Users\drubino\Documents\Software\Linq.Parsers\Linq.Parsers.Json.Testing\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\Users\drubino\Documents\Software\Linq.Parsers\Linq.Parsers.Json.Testing\bin\Debug\Linq.Parsers.Json.pdb
+C:\Users\drubino\Documents\Software\Linq.Parsers\Linq.Parsers.Json.Testing\bin\Debug\Linq.Parsers.pdb
+C:\Users\drubino\Documents\Software\Linq.Parsers\Linq.Parsers.Json.Testing\obj\Debug\Linq.Parsers.Json.Testing.dll
+C:\Users\drubino\Documents\Software\Linq.Parsers\Linq.Parsers.Json.Testing\obj\Debug\Linq.Parsers.Json.Testing.pdb

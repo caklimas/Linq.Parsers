@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Linq.Parsers.Testing
@@ -18,17 +21,35 @@ namespace Linq.Parsers.Testing
             new SimpleText("ab", 1, 0);
             new SimpleText("ab", 0, 1);
             new SimpleText("ab", 1, 1);
-
-            AssertThrows(() => new SimpleText("", 1, 0));
-            AssertThrows(() => new SimpleText("", 0, 1));
-            AssertThrows(() => new SimpleText("", -1, 0));
-            AssertThrows(() => new SimpleText("", 0, -1));
-            AssertThrows(() => new SimpleText("a", 1, 0));
-            AssertThrows(() => new SimpleText("a", 1, 1));
-            AssertThrows(() => new SimpleText("ab", 1, 1));
         }
 
         #endregion //Constructor
+
+        #region GetEnumerator
+
+        [TestMethod]
+        public void GetEnumerator()
+        {
+            var text = new SimpleText("", 0, 0);
+            var characters = text.ToArray();
+            Assert.IsTrue(characters.Length == 0);
+
+            text = new SimpleText("abc", 0, 3);
+            characters = text.ToArray();
+            Assert.IsTrue(characters.Length == 3);
+            Assert.IsTrue(characters[0] == 'a');
+            Assert.IsTrue(characters[1] == 'b');
+            Assert.IsTrue(characters[2] == 'c');
+
+            text = new SimpleText("__abc__", 2, 3);
+            characters = text.ToArray();
+            Assert.IsTrue(characters.Length == 3);
+            Assert.IsTrue(characters[0] == 'a');
+            Assert.IsTrue(characters[1] == 'b');
+            Assert.IsTrue(characters[2] == 'c');
+        }
+
+        #endregion //GetEnumerator
 
         #region ToString
 
@@ -118,11 +139,136 @@ namespace Linq.Parsers.Testing
             split = text.Split(3);
             Assert.IsTrue(split.Head.ToString() == "abc");
             Assert.IsTrue(split.Tail.ToString() == "");
-
-            AssertThrows(() => text.Split(4));
-            AssertThrows(() => text.Split(-1));
         }
 
         #endregion //Split
+
+        #region IsSimpleTextAppendableTo
+
+        [TestMethod]
+        public void IsSimpleTextAppendableTo()
+        {
+            var text = "abc";
+            var head = new SimpleText(text, 0, 1);
+            var tail = new SimpleText(text, 2, 1);
+            Assert.IsFalse(head.IsSimpleTextAppendableTo(tail));
+
+            text = "abc";
+            head = new SimpleText(text, 0, 2);
+            tail = new SimpleText(text, 1, 2);
+            Assert.IsFalse(head.IsSimpleTextAppendableTo(tail));
+
+            text = "abc";
+            head = new SimpleText(text, 0, 1);
+            tail = new SimpleText(text, 1, 2);
+            Assert.IsTrue(head.IsSimpleTextAppendableTo(tail));
+
+            text = "abc";
+            head = new SimpleText(text, 0, 2);
+            tail = new SimpleText(text, 2, 1);
+            Assert.IsTrue(head.IsSimpleTextAppendableTo(tail));
+        }
+
+        #endregion //IsSimpleTextAppendableTo
+
+        #region IsComplexTextAppendableTo
+
+        [TestMethod]
+        public void IsComplexTextAppendableTo()
+        {
+            var text = "abc";
+            var head = new SimpleText(text, 0, 1);
+            var tail = new ComplexText(new[] { new SimpleText(text, 2, 1) });
+            Assert.IsFalse(head.IsComplexTextAppendableTo(tail));
+
+            text = "abc";
+            head = new SimpleText(text, 0, 2);
+            tail = new ComplexText(new[] { new SimpleText(text, 1, 2) });
+            Assert.IsFalse(head.IsComplexTextAppendableTo(tail));
+
+            text = "abc";
+            head = new SimpleText(text, 0, 1);
+            tail = new ComplexText(new[] { new SimpleText(text, 1, 2) });
+            Assert.IsTrue(head.IsComplexTextAppendableTo(tail));
+
+            text = "abc";
+            head = new SimpleText(text, 0, 2);
+            tail = new ComplexText(new[] { new SimpleText(text, 2, 1) });
+            Assert.IsTrue(head.IsComplexTextAppendableTo(tail));
+        }
+
+        #endregion //IsComplexTextAppendableTo
+
+        #region AppendSimpleText
+
+        [TestMethod]
+        public void AppendSimpleText()
+        {
+            var text = "abc";
+            var head = new SimpleText(text, 0, 1);
+            var tail = new SimpleText(text, 2, 1);
+            var result = head.AppendSimpleText(tail);
+            Assert.IsTrue(result == "ac");
+            Assert.IsFalse(result is SimpleText);
+
+            text = "abc";
+            head = new SimpleText(text, 0, 2);
+            tail = new SimpleText(text, 1, 2);
+            result = head.AppendSimpleText(tail);
+            Assert.IsTrue(result == "abbc");
+            Assert.IsFalse(result is SimpleText);
+
+            text = "abc";
+            head = new SimpleText(text, 0, 1);
+            tail = new SimpleText(text, 1, 2);
+            result = head.AppendSimpleText(tail);
+            Assert.IsTrue(result == "abc");
+            Assert.IsTrue(result is SimpleText);
+
+            text = "abc";
+            head = new SimpleText(text, 0, 2);
+            tail = new SimpleText(text, 2, 1);
+            result = head.AppendSimpleText(tail);
+            Assert.IsTrue(result == "abc");
+            Assert.IsTrue(result is SimpleText);
+        }
+
+        #endregion //AppendSimpleText
+
+        #region AppendComplexText
+
+        [TestMethod]
+        public void AppendComplexText()
+        {
+            var text = "abc";
+            var head = new SimpleText(text, 0, 1);
+            var tail = new ComplexText(new[] { new SimpleText(text, 2, 1) });
+            var result = head.AppendComplexText(tail);
+            Assert.IsTrue(result == "ac");
+            Assert.IsFalse(result is SimpleText);
+
+            text = "abc";
+            head = new SimpleText(text, 0, 2);
+            tail = new ComplexText(new[] { new SimpleText(text, 1, 2) });
+            result = head.AppendComplexText(tail);
+            Assert.IsTrue(result == "abbc");
+            Assert.IsFalse(result is SimpleText);
+
+            text = "abc";
+            head = new SimpleText(text, 0, 1);
+            tail = new ComplexText(new[] { new SimpleText(text, 1, 2) });
+            result = head.AppendComplexText(tail);
+            Assert.IsTrue(result == "abc");
+            Assert.IsTrue(result is SimpleText);
+
+            text = "abc";
+            head = new SimpleText(text, 0, 2);
+            tail = new ComplexText(new[] { new SimpleText(text, 2, 1) });
+            result = head.AppendComplexText(tail);
+            Assert.IsTrue(result == "abc");
+            Assert.IsTrue(result is SimpleText);
+        }
+
+        #endregion //AppendComplexText
     }
 }

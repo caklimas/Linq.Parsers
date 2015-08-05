@@ -51,6 +51,8 @@ namespace Linq.Parsers
 
         #region Methods
 
+        #region Append
+
         public Text Append(Text tail)
         {
             tail.AssertNotNull();
@@ -66,14 +68,101 @@ namespace Linq.Parsers
             return this.AppendComplexText((ComplexText)tail);
         }
 
+        #endregion //Append
+
+        #region StartsWith
+
+        public bool StartsWith(string text)
+        {
+            text.AssertNotNull();
+            if (this.Length < text.Length)
+                return false;
+
+            var index = 0;
+            foreach (var character in text)
+            {
+                if (this[index++] != character)
+                    return false;
+            }
+
+            return true;
+        }
+
+        #endregion //StartsWith
+
+        #region Split
+
         public abstract SplitText Split(int index);
+
+        #endregion //Split
+
+        #region Skip
+
+        public Text Skip(int count)
+        {
+            count.AssertNotNegative();
+            if (this.Length <= count)
+                return Text.Empty;
+
+            return Split(count).Tail;
+        }
+
+        #endregion //Skip
+
+        #region SkipWhile
+
+        public Text SkipWhile(Func<char, bool> predicate)
+        {
+            var index = 0;
+            while (index < this.Length && predicate(this[index]))
+                index = index + 1;
+
+            if (index >= this.Length)
+                return Text.Empty;
+            return Split(index).Tail;
+        }
+
+        #endregion //SkipWhile
+
+        #region Take
+
+        public Text Take(int count)
+        {
+            count.AssertNotNegative();
+            if (this.Length <= count)
+                return this;
+
+            return Split(count).Head;
+        }
+
+        #endregion //Take
+
+        #region TakeWhile
+
+        public Text TakeWhile(Func<char, bool> predicate)
+        {
+            var index = 0;
+            while (index < this.Length && predicate(this[index]))
+                index = index + 1;
+
+            if (index >= this.Length)
+                return this;
+            return Split(index).Head;
+        }
+
+        #endregion //TakeWhile
+
+        #endregion //Methods
+
+        #region Internal Methods
+
         internal abstract bool IsSimpleTextAppendableTo(SimpleText tail);
         internal abstract bool IsComplexTextAppendableTo(ComplexText tail);
         internal abstract Text AppendSimpleText(SimpleText tail);
         internal abstract Text AppendComplexText(ComplexText tail);
         internal abstract string Evaluate();
 
-        #endregion //Methods
+        #endregion //Internal Methods
 
         #region Static Members
 
@@ -143,6 +232,26 @@ namespace Linq.Parsers
         #endregion //IsEmpty
 
         #endregion //Methods
+
+        #region Operators
+
+        public static implicit operator Text(string text)
+        {
+            return Text.Create(text);
+        }
+
+        public static implicit operator Text(char character)
+        {
+            return Text.Create(character);
+        }
+
+        public static implicit operator string(Text text)
+        {
+            text.AssertNotNull();
+            return text.ToString();
+        }
+
+        #endregion //Operators
 
         #endregion //Static Members
     }
