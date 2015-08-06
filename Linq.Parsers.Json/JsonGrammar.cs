@@ -29,7 +29,7 @@ namespace Linq.Parsers.Json
             }
         }
 
-        #endregion //ColonBrace
+        #endregion //CloseBrace
 
         #region CloseBracket
 
@@ -41,8 +41,8 @@ namespace Linq.Parsers.Json
                 if (this.closeBracket == null)
                 {
                     this.closeBracket =
-                                from result in Char(']').WithTrivia()
-                                select new CloseBracket(result.LeftTrivia, result.Value, result.RightTrivia);
+                        from result in Char(']').WithTrivia()
+                        select new CloseBracket(result.LeftTrivia, result.Value, result.RightTrivia);
                 }
 
                 return this.closeBracket;
@@ -141,8 +141,8 @@ namespace Linq.Parsers.Json
                 if (this.falseParser == null)
                 {
                     this.falseParser =
-                                from result in this.String("false").WithTrivia()
-                                select new False(result.LeftTrivia, result.Value, result.RightTrivia);
+                        from result in this.String("false").WithTrivia()
+                        select new False(result.LeftTrivia, result.Value, result.RightTrivia);
                 }
 
                 return this.falseParser;
@@ -201,8 +201,8 @@ namespace Linq.Parsers.Json
                 if (this.nullParser == null)
                 {
                     this.nullParser =
-                                from result in this.String("null").WithTrivia()
-                                select new Null(result.LeftTrivia, result.Value, result.RightTrivia);
+                        from result in this.String("null").WithTrivia()
+                        select new Null(result.LeftTrivia, result.Value, result.RightTrivia);
                 }
 
                 return this.nullParser;
@@ -241,8 +241,8 @@ namespace Linq.Parsers.Json
                 if (this.openBracket == null)
                 {
                     this.openBracket =
-                                from result in Char('[').WithTrivia()
-                                select new OpenBracket(result.LeftTrivia, result.Value, result.RightTrivia);
+                        from result in Char('[').WithTrivia()
+                        select new OpenBracket(result.LeftTrivia, result.Value, result.RightTrivia);
                 }
 
                 return this.openBracket;
@@ -281,8 +281,8 @@ namespace Linq.Parsers.Json
                 if (this.trueParser == null)
                 {
                     this.trueParser =
-                                from result in this.String("true").WithTrivia()
-                                select new True(result.LeftTrivia, result.Value, result.RightTrivia);
+                        from result in this.String("true").WithTrivia()
+                        select new True(result.LeftTrivia, result.Value, result.RightTrivia);
                 }
 
                 return this.trueParser;
@@ -732,7 +732,7 @@ namespace Linq.Parsers.Json
                 {
                     var objectParser =
                         from jsonObject in this.Object
-                        select jsonObject as JsonSyntaxNode; ;
+                        select jsonObject as JsonSyntaxNode;
 
                     var arrayParser =
                         from jsonArray in this.JsonArray
